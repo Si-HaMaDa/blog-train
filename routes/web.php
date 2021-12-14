@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    // Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index']);
+    // Route::get('/blog/create', [App\Http\Controllers\BlogController::class, 'create']);
+    // Route::get('/blog/edit', [App\Http\Controllers\BlogController::class, 'edit']);
+
+    Route::resource('blog', App\Http\Controllers\BlogController::class);
+
+});
