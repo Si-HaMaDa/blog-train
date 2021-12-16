@@ -14,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('admin.blog.index');
+        $blogs = Blog::all();
+        return view('admin.blog.index')->with('blogs', $blogs);
     }
 
     /**
@@ -24,7 +25,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return 'Create';
+        return view('admin.blog.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Create';
+        $data = $this->validate($request, [
+            'title' => 'string|max:10|min:1|required',
+            'reacts' => 'integer',
+            'content' => 'nullable'
+        ], [
+            'title.max' => 'Error in title'
+        ]);
+
+        Blog::create($data);
+        session()->flash('success', 'Your Blog has been created');
+        return redirect(route('blogs.index'));
     }
 
     /**
@@ -46,7 +57,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return view('admin.blog.show', ['blog' => $blog]);
     }
 
     /**
@@ -80,6 +91,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        return 'Destroy';
+        $blog->delete();
+        session()->flash('success', 'You deleted the Blog');
+        return redirect(route('blogs.index'));
     }
 }
