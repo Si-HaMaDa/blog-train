@@ -34,7 +34,7 @@
                     <td><img width="75" src="{{ $blog->img }}"></td>
                     <td>
                         <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-success btn-sm">Show</a> |
-                        <a href="" class="btn btn-primary btn-sm">Edit</a> |
+                        <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-primary btn-sm">Edit</a> |
                         <form method="POST" action="{{ route('blogs.destroy', $blog->id) }}">
                             @csrf
                             <input type="hidden" name="_method" value="delete">

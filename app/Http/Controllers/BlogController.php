@@ -68,7 +68,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return 'Edit';
+        return view('admin.blog.edit', ['blog' => $blog]);
     }
 
     /**
@@ -80,7 +80,17 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        return 'Create';
+        $data = $this->validate($request, [
+            'title' => 'string|max:10|min:1|required',
+            'reacts' => 'integer',
+            'content' => 'nullable'
+        ], [
+            'title.max' => 'Error in title'
+        ]);
+
+        $blog->update($data);
+        session()->flash('success', 'Your Blog has been updated');
+        return redirect(route('blogs.index'));
     }
 
     /**
