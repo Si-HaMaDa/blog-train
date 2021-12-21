@@ -36,13 +36,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $data = $this->validate($request, [
             'title' => 'string|max:10|min:1|required',
             'reacts' => 'integer',
-            'content' => 'nullable'
+            'content' => 'nullable',
+            'img' => 'required|image'
         ], [
             'title.max' => 'Error in title'
         ]);
+
+        $path = $request->file('img')->store('imgs');
+
+        $data['img'] = $path;
 
         Blog::create($data);
         session()->flash('success', 'Your Blog has been created');

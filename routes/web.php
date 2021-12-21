@@ -33,4 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::delete('/blogs/{id}', [App\Http\Controllers\BlogController::class, 'destroy']);
 
     Route::resource('blogs', App\Http\Controllers\BlogController::class);
+
+    Route::resource('comments', App\Http\Controllers\CommentController::class)->only('index', 'show', 'destroy')->middleware('block');
 });

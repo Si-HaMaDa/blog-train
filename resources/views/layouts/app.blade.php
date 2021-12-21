@@ -96,9 +96,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('comments.index') }}">
                                 <span data-feather="shopping-cart"></span>
-                                Products
+                                Comments
                             </a>
                         </li>
                         <li class="nav-item">

@@ -14,16 +14,21 @@
     </div>
     @endif
     <div class="container">
-        <form method="POST" action="{{ route('blogs.store') }}">
+        <form method="POST" action="{{ route('blogs.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group m-3">
                 <label for="title">Title</label>
-                <input value="{{ old('title') }}" type="text" class="form-control" name="title" id="title"
+                <input value="{{ old('title') }}" type="text" maxlength="9" class="form-control" name="title" id="title"
                     placeholder="name@example.com">
             </div>
             <div class="form-group m-3">
                 <label for="reacts">Reacts</label>
-                <input value="{{ old('reacts') }}" type="text" class="form-control" name="reacts" id="reacts"
+                <input value="{{ old('reacts') }}" type="number" class="form-control" name="reacts" id="reacts"
+                    placeholder="5">
+            </div>
+            <div class="form-group m-3">
+                <label for="img">Image</label>
+                <input type="file" class="form-control" name="img" id="img"
                     placeholder="5">
             </div>
             <div class="form-group m-3">
