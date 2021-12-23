@@ -64,7 +64,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('admin.blog.show', ['blog' => $blog]);
+        return view('admin.blog.show', ['blog' => $blog->load('users')]);
     }
 
     /**

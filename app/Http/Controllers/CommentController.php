@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,15 @@ class CommentController extends Controller
      */
     public function index()
     {
+        // $comment = Comment::with('user', 'blog')->find(3);
+        // dd($comment->user->name);
+
+        // $blog = Blog::with('comments')->find(1);
+        // dd($blog->comments[1]->name);
+
+        // $blog = Blog::with('users')->find(3);
+        // dd($blog);
+
         $comments = Comment::all()->load('user');
         return view('admin.comment.index')->with('comments', $comments);
     }

@@ -18,4 +18,14 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the Blog that owns the Comment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Blog()
+    {
+        return $this->belongsTo(Blog::class);
+    }
 }

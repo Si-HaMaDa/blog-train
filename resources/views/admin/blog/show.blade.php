@@ -14,6 +14,10 @@
         <p>{{ $blog->reacts }}</p>
         <p>Image:</p>
         <p><img src="{{ $blog->img }}" alt=""></p>
+        <p>Users:</p>
+        @foreach ($blog->users as $user)
+            <p> - {{ $user->name }}</p>
+        @endforeach
     </div>
 </main>
 @endsection
