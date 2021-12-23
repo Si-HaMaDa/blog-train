@@ -31,7 +31,7 @@
                     <td>{{ $blog->id }}</td>
                     <td>{{ $blog->title }}</td>
                     <td>{{ $blog->reacts }}</td>
-                    <td><img width="75" src="{{ url('/').'/' . $blog->img }}"></td>
+                    <td><img width="75" src="{{ url('storage/'.$blog->img) }}"></td>
                     <td>
                         <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-success btn-sm">Show</a> |
                         <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-primary btn-sm">Edit</a> |
