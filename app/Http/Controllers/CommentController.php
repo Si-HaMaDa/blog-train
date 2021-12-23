@@ -14,8 +14,6 @@ class CommentController extends Controller
      */
     public function index()
     {
-        // $comment = Comment::find(3)->load('user');
-        // dd($comment->user->name);
         $comments = Comment::all()->load('user');
         return view('admin.comment.index')->with('comments', $comments);
     }
@@ -42,6 +40,5 @@ class CommentController extends Controller
         $comment->delete();
         session()->flash('success', 'You deleted the Comment');
         return redirect(route('comments.index'));
-
     }
 }

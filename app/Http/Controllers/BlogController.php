@@ -41,14 +41,15 @@ class BlogController extends Controller
             'title' => 'string|max:10|min:1|required',
             'reacts' => 'integer',
             'content' => 'nullable',
-            'img' => 'required|image'
+            'img' => 'nullable|image'
         ], [
             'title.max' => 'Error in title'
         ]);
 
-        $path = $request->file('img')->store('imgs');
-
-        $data['img'] = $path;
+        if($request->file('img')){
+            $path = $request->file('img')->store('imgs');
+            $data['img'] = $path;
+        }
 
         Blog::create($data);
         session()->flash('success', 'Your Blog has been created');

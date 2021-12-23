@@ -30,7 +30,7 @@
             <div class="form-group m-3">
                 <label class="d-block" for="content">Content</label>
                 <textarea name="content" id="content" cols="30"
-                    rows="10">{{ old('content') ??$blog->content }}</textarea>
+                    rows="10">{{ old('content') ?? $blog->content }}</textarea>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Edit Blog</button>
         </form>
